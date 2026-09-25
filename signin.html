@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Tech LMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <!-- Left Banner / Visual Side -->
+        <div class="auth-banner">
+            <a href="index.html" class="back-home-floating"><i class="fa-solid fa-house"></i> Home</a>
+        </div>
+
+        <!-- Right Form Side -->
+        <div class="auth-form-container">
+            <div class="auth-card animate-scale">
+                <div class="auth-header">
+                    <h2>Welcome Back!</h2>
+                    <p>Please enter your credentials to log in.</p>
+                </div>
+
+                <form id="signinForm">
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="email" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="role">Login As</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-user-tag"></i>
+                            <select id="role" required>
+                                <option value="student">Student</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="auth-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </form>
+
+                <p class="auth-footer">Don't have an account yet? <a href="signup.html">Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h2>DashBoard</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fa-solid fa-users"></i> Users</a></li>
+                <li><a href="#"><i class="fa-solid fa-wallet"></i> Analytics</a></li>
+                <li><a href="#" id="open-settings-btn"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Wrapper -->
+        <div class="main-wrapper">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search anything...">
+                </div>
+                <div class="header-right">
+                    <div class="notification-icon">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="../assets/image/images (2).jfif" alt="Admin Avatar">
+                        <span id="header-admin-name">ABC</span>
+                    </div>
+                </div>
+            </header>
+
+           
+            <main class="dashboard-content">
+                <div class="welcome-banner">
+                    <h1>Welcome Back, <span id="welcome-name">User</span> </h1>
+                    <p>Here is what's happening with your account today.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Tech LMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <a href="index.html" class="logo"><i class="fa-solid fa-graduation-cap"></i><span>Tech</span></a>
+                <i class="fa-solid fa-xmark mobile-close" id="sidebarClose"></i>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+                <li><a href="analytics.html"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
+                <li><a href="certificates.html"><i class="fa-solid fa-certificate"></i> Certificates</a></li>
+                <li><a href="saved-items.html"><i class="fa-solid fa-bookmark"></i> Saved Items</a></li>
+                <li><a href="settings.html" class="active"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="dash-header">
+                <div class="header-left">
+                    <i class="fa-solid fa-bars hamburger" id="sidebarToggle"></i>
+                    <h2>Account Settings</h2>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <img src="../assets/image/images (2).jfif" alt="User">
+                        <span>ABC</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dash-body">
+                <div class="widget-box" style="max-width: 700px;">
+                    <h3>Edit Profile Details</h3>
+                    <form style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                        <div>
+                            <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">Full Name</label>
+                            <input type="text" value="ABC" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; outline: none;">
+                        </div>
+                        <div>
+                            <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">Email Address</label>
+                            <input type="email" value="ABC@gmail.com" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; outline: none;">
+                        </div>
+                        <div>
+                            <label style="font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px;">New Password</label>
+                            <input type="password" placeholder="********" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; outline: none;">
+                        </div>
+                        <button type="submit" class="btn-resume" style="align-self: flex-start; padding: 10px 20px; border: none; cursor: pointer;">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

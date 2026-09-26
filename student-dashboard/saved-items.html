@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Items - Tech LMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <a href="index.html" class="logo"><i class="fa-solid fa-graduation-cap"></i><span>Tech</span></a>
+                <i class="fa-solid fa-xmark mobile-close" id="sidebarClose"></i>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+                <li><a href="analytics.html"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
+                <li><a href="certificates.html"><i class="fa-solid fa-certificate"></i> Certificates</a></li>
+                <li><a href="saved-items.html" class="active"><i class="fa-solid fa-bookmark"></i> Saved Items</a></li>
+                <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="dash-header">
+                <div class="header-left">
+                    <i class="fa-solid fa-bars hamburger" id="sidebarToggle"></i>
+                    <h2>Saved Bookmarks</h2>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <img src="../assets/image/images (2).jfif" alt="User">
+                        <span>ABC</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dash-body">
+                <div class="widget-box">
+                    <h3>Bookmarked Lessons & Lectures</h3>
+                    <ul style="display: flex; flex-direction: column; gap: 15px;">
+                        <li style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid #e5e7eb;">
+                            <div>
+                                <h4 style="font-size: 14px; color: #1a1a1a;">Understanding React Custom Hooks</h4>
+                                <p style="font-size: 12px; color: #687280;">Full-Stack Web Development Bootcamp • Lesson 14</p>
+                            </div>
+                            <a href="#" class="btn-resume">Watch</a>
+                        </li>
+                        <li style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid #e5e7eb;">
+                            <div>
+                                <h4 style="font-size: 14px; color: #1a1a1a;">Figma Auto-Layout Advanced Tips</h4>
+                                <p style="font-size: 12px; color: #687280;">UI/UX Masterclass • Lesson 8</p>
+                            </div>
+                            <a href="#" class="btn-resume">Watch</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

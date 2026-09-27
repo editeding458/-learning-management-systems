@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
        
             if (matchedUser.role === 'admin') {
-                window.location.href = 'admin-dashboard.html';
+                window.location.href = '../admin-dashboard/admin.html';
             } else {
                 window.location.href = '../student-dashboard/index.html';
             }
@@ -92,7 +92,7 @@ function protectRoute(requiredRole) {
     if (loggedInUser.role !== requiredRole) {
         alert('Unauthorized Access!');
         if (loggedInUser.role === 'admin') {
-            window.location.href = 'admin-dashboard.html';
+            window.location.href = '../admin-dashboard/admin.html';
         } else {
             window.location.href = '../student-dashboard/index.html';
         }

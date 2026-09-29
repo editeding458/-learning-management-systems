@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Tech LMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/student-style.css">
+<script src="assets/js/dashboard-guard.js"></script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <a href="student.html" class="logo"><i class="fa-solid fa-graduation-cap"></i><span>Tech</span></a>
+                <i class="fa-solid fa-xmark mobile-close" id="sidebarClose"></i>
+            </div>
+            <ul class="sidebar-menu">
+               <li><a href="student.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+            <li><a href="payments.html" class="active"><i class="fa-solid fa-credit-card"></i> Payments</a></li>
+            <li><a href="assignments.html"><i class="fa-solid fa-file-lines"></i> Assignments</a></li>
+            <li><a href="live-classes.html"><i class="fa-solid fa-video"></i> Live Classes</a></li>
+            <li><a href="attendance.html"><i class="fa-solid fa-calendar-check"></i> Attendance</a></li>
+            <li><a href="leave.html"><i class="fa-solid fa-calendar-minus"></i> Leave Requests</a></li>
+            <li><a href="analytics.html"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
+            <li><a href="learning-level.html"><i class="fa-solid fa-stairs"></i> Learning Level</a></li>
+            <li><a href="reviews.html"><i class="fa-solid fa-star-half-stroke"></i> Course Reviews</a></li>
+            <li><a href="coupons.html"><i class="fa-solid fa-ticket"></i> Coupons</a></li>
+            <li><a href="certificates.html"><i class="fa-solid fa-certificate"></i> Certificates</a></li>
+            <li><a href="saved-items.html"><i class="fa-solid fa-bookmark"></i> Saved Items</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </aside>   
+        <main class="main-content">
+            <header class="dash-header">
+                <div class="header-left">
+                    <i class="fa-solid fa-bars hamburger" id="sidebarToggle"></i>
+                    <h2>Student Dashboard</h2>
+                </div>
+                <div class="header-right">
+                    <div class="notification" aria-label="Notifications">
+                        <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                        <span class="badge">0</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../assets/image/images (2).jfif" alt="Student profile">
+                        <span>Student</span>
+                    </div>
+                </div>
+            </header>
+            <div class="dash-body student-home">
+                <section class="student-welcome" aria-labelledby="studentWelcomeTitle">
+                    <div class="student-welcome-copy">
+                        <p class="student-welcome-kicker">YOUR LEARNING SPACE</p>
+                        <h1 id="studentWelcomeTitle">Welcome back, <span data-student-name>Student</span></h1>
+                        <p>Pick up where you left off and keep your learning momentum going.</p>
+                    </div>
+                    <a class="student-welcome-action" href="courses.html"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Browse my courses</a>
+                    <span class="welcome-mark" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></span>
+                </section>
+
+                <section class="student-metrics" aria-label="Learning summary">
+                    <article class="metric-card metric-courses"><span class="metric-icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span><div><strong>0</strong><span>Enrolled courses</span></div><i class="fa-solid fa-arrow-trend-up metric-trend" aria-hidden="true"></i></article>
+                    <article class="metric-card metric-complete"><span class="metric-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span><div><strong>0</strong><span>Completed</span></div><i class="fa-solid fa-check metric-trend" aria-hidden="true"></i></article>
+                    <article class="metric-card metric-time"><span class="metric-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span><div><strong>0 <small>hrs</small></strong><span>Study time</span></div><i class="fa-solid fa-hourglass-half metric-trend" aria-hidden="true"></i></article>
+                    <article class="metric-card metric-certificates"><span class="metric-icon"><i class="fa-solid fa-award" aria-hidden="true"></i></span><div><strong>0</strong><span>Certificates</span></div><i class="fa-solid fa-star metric-trend" aria-hidden="true"></i></article>
+                </section>
+
+                <div class="student-dashboard-grid">
+                    <div class="student-main-column">
+                        <section class="student-section" aria-labelledby="continueLearningTitle">
+                            <header class="student-section-heading">
+                                <div><p class="eyebrow">PICK UP WHERE YOU LEFT OFF</p><h2 id="continueLearningTitle">Continue learning</h2></div>
+                                <a class="student-section-link" href="courses.html">All courses <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                            </header>
+                            <div class="progress-cards" id="dashboardCourseProgress" aria-live="polite"></div>
+                        </section>
+                    </div>
+
+                    <aside class="student-side-column" aria-label="Learning tools">
+                        <section class="student-section attendance-panel" aria-labelledby="attendanceTitle">
+                            <header class="student-section-heading compact-heading"><div><p class="eyebrow">DAILY CHECK-IN</p><h2 id="attendanceTitle">Attendance</h2></div><a class="small-icon-link" href="attendance.html" aria-label="Open attendance history"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></header>
+                            <div class="attendance-summary">
+                                <div><span>Current status</span><strong id="attendanceStatus" class="status-pill status-inactive">Not checked in</strong></div>
+                                <div><span>Live learning time</span><strong id="attendanceDuration">00:00:00</strong></div>
+                                <div><span>Today's records</span><strong id="todaySummary">0 record(s)</strong></div>
+                                <div><span>Last check</span><strong id="lastAttendance">--</strong></div>
+                            </div>
+                            <div class="attendance-actions"><button id="checkInBtn" class="btn-resume" type="button"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i> Check in</button><button id="checkOutBtn" class="btn-resume btn-secondary" type="button"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Check out</button></div>
+                            <div class="table-responsive"><table class="attendance-table"><thead><tr><th>Status</th><th>Date</th><th>Time</th></tr></thead><tbody id="attendanceTableBody"></tbody></table></div>
+                            <a class="attendance-history-link" href="attendance.html">See attendance history <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </section>
+
+                        <section class="student-section badges-panel" aria-labelledby="badgesTitle">
+                            <header class="student-section-heading compact-heading"><div><p class="eyebrow">MILESTONES</p><h2 id="badgesTitle">Recent badges</h2></div></header>
+                            <div class="badges-row" id="studentBadges"><p class="student-record-empty">No badges earned yet.</p></div>
+                        </section>
+                    </aside>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/student-script.js"></script>
+    <script src="../assets/js/report-issue.js"></script>
+</body>
+</html>

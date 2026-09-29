@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Courses - Tech LMS</title>
+    <title>Learning Level - Tech LMS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/student-style.css">
@@ -16,7 +16,7 @@
                 <i class="fa-solid fa-xmark mobile-close" id="sidebarClose"></i>
             </div>
             <ul class="sidebar-menu">
-                <li><a href="student.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="student.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
             <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
             <li><a href="payments.html" class="active"><i class="fa-solid fa-credit-card"></i> Payments</a></li>
             <li><a href="assignments.html"><i class="fa-solid fa-file-lines"></i> Assignments</a></li>
@@ -31,31 +31,32 @@
             <li><a href="saved-items.html"><i class="fa-solid fa-bookmark"></i> Saved Items</a></li>
             <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
             <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
-            </ul>
-        </aside>
-
         <main class="main-content">
             <header class="dash-header">
                 <div class="header-left">
                     <i class="fa-solid fa-bars hamburger" id="sidebarToggle"></i>
-                    <h2>My Courses</h2>
+                    <h2>Learning Level</h2>
                 </div>
                 <div class="header-right">
-                    <div class="user-profile">
-                        <img src="../assets/image/images (2).jfif" alt="User">
-                        <span>ABC</span>
-                    </div>
+                    <div class="notification" aria-label="Notifications"><i class="fa-regular fa-bell" aria-hidden="true"></i><span class="badge">0</span></div>
+                    <div class="user-profile"><img src="../assets/image/images (2).jfif" alt="Student profile"><span>Student</span></div>
                 </div>
             </header>
-
             <div class="dash-body">
-                <div class="section-title"><h3>My enrollments</h3></div>
-                <div class="student-enrollment-grid" id="studentEnrollmentList" aria-live="polite"></div>
-                <section class="student-catalog" aria-labelledby="newCoursesTitle">
-                    <header class="section-title">
-                        <div><p class="eyebrow">JUST PUBLISHED</p><h3 id="newCoursesTitle">New assigned courses</h3></div>
-                    </header>
-                    <div class="student-catalog-grid" id="publishedCourseList" aria-live="polite"></div>
+                <section class="student-section learning-level-panel">
+                    <p class="eyebrow">PERSONALIZE YOUR LEARNING</p>
+                    <h1 class="student-page-title">Set your current level</h1>
+                    <p>Choose the level that best describes your experience. You can update it whenever your goals change.</p>
+                    <form id="learningLevelForm" class="learning-level-form">
+                        <label for="learningLevel">Current level</label>
+                        <select id="learningLevel" name="learningLevel">
+                            <option>Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                        <button class="btn-resume" type="submit">Save level</button>
+                        <p id="learningLevelStatus" role="status" aria-live="polite"></p>
+                    </form>
                 </section>
             </div>
         </main>

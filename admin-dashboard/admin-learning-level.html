@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Profile - Tech LMS</title>
+    <title>Manage Learning Levels - Tech LMS Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/admin-style.css">
@@ -17,7 +17,7 @@
                 <i class="fa-solid fa-xmark mobile-close" id="sidebarClose"></i>
             </div>
             <ul class="sidebar-menu">
-                <li><a href="admin.html" class="active"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                 <li><a href="admin.html" class="active"><i class="fa-solid fa-house"></i> Dashboard</a></li>
                 <li><a href="students.html"><i class="fa-solid fa-users"></i> Total Students</a></li>
                 <li><a href="admin-learning-level.html"><i class="fa-solid fa-stairs"></i> Learning Levels</a></li>
                 <li><a href="admin-leave-requests.html"><i class="fa-solid fa-calendar-minus"></i> Leave Requests</a></li>
@@ -35,7 +35,7 @@
                 <li><a href="export.html"><i class="fa-solid fa-download"></i> Data Export</a></li>
                 <li><a href="reviews.html"><i class="fa-solid fa-comments"></i> Student Reviews</a></li>
                 <li><a href="support.html"><i class="fa-solid fa-ticket"></i> Support Tickets</a></li>
-                
+               
                 <li><a href="assignments.html"><i class="fa-solid fa-file-invoice"></i> Assignments Tracker</a></li>
                 <li><a href="certificates.html"><i class="fa-solid fa-award"></i> Certificates Issuer</a></li>
                 <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Secure Logout</a></li>
@@ -47,14 +47,11 @@
             <header class="dash-header">
                 <div class="header-left">
                     <i class="fa-solid fa-bars hamburger" id="sidebarToggle"></i>
-                    <h2>Admin Profile Settings</h2>
+                    <h2>Manage Student Learning Levels</h2>
                 </div>
                 <div class="header-right">
                     <div class="notification-wrap">
-                        <div class="notification" role="button" tabindex="0">
-                            <i class="fa-solid fa-bell"></i>
-                            <span class="badge">0</span>
-                        </div>
+                        <div class="notification"><i class="fa-solid fa-bell"></i><span class="badge">0</span></div>
                     </div>
                     <div class="user-profile">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Admin profile">
@@ -64,43 +61,42 @@
             </header>
 
             <div class="dash-body">
+                <div data-module-note style="margin-bottom:16px;padding:12px 16px;border:1px solid var(--border-color);border-radius:10px;background:var(--card-bg,#fff);color:var(--text-muted,#6b7280);"><i class="fa-solid fa-circle-info"></i> Student-selected learning levels appear here automatically.</div>
                 <div class="module-content">
                     <header class="module-summary">
                         <div>
-                            <p class="eyebrow">SETTINGS</p>
-                            <h1>Administrator Profile</h1>
-                            <p>Update your personal information and account security settings below.</p>
+                            <p class="eyebrow">STUDENT ANALYTICS</p>
+                            <h1>Learning Levels Overview</h1>
+                            <p>Monitor student distribution across beginner, intermediate, and advanced levels.</p>
                         </div>
                     </header>
-                    <div class="module-layout is-single">
-                        <section class="module-panel">
-                            <h2>Edit Profile Information</h2>
-                            <p>Update your administrator details and account password.</p>
-                            <form class="module-form" id="adminProfileForm">
-                                <label class="module-field">Full Name
-                                    <input type="text" id="adminNameInput" name="name" required value="Admin User">
-                                </label>
-                                <label class="module-field">Email Address
-                                    <input type="email" id="adminEmailInput" name="email" required value="admin@techlms.com">
-                                </label>
-                                <label class="module-field">Current Password
-                                    <input type="password" id="adminCurrentPasswordInput" name="currentPassword" autocomplete="current-password">
-                                </label>
-                                <label class="module-field">New Password
-                                    <input type="password" id="adminPasswordInput" name="newPassword" autocomplete="new-password" minlength="8">
-                                </label>
-                                <label class="module-field">Confirm New Password
-                                    <input type="password" id="adminConfirmPasswordInput" name="confirmPassword" autocomplete="new-password" minlength="8">
-                                </label>
-                                <button class="button button-primary" type="submit">Save Changes</button>
-                            </form>
-                        </section>
-                    </div>
+                    <section class="module-panel">
+                        <h2>Registered Students Level Status</h2>
+                        <div style="overflow-x: auto; margin-top: 15px;">
+                            <table style="width: 100%; border-collapse: collapse; text-align: left;" id="adminLearningLevelsTable">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-dark);">
+                                        <th style="padding: 12px;">Student Name</th>
+                                        <th style="padding: 12px;">Email</th>
+                                        <th style="padding: 12px;">Current Level</th>
+                                        <th style="padding: 12px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 12px;">John Doe</td>
+                                        <td style="padding: 12px;">john@example.com</td>
+                                        <td style="padding: 12px;"><span style="background: #e1f5fe; color: #0288d1; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Beginner</span></td>
+                                        <td style="padding: 12px;"><button class="button button-secondary" style="padding: 6px 12px; font-size: 12px;">Edit Level</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
             </div>
         </main>
     </div>
     <script src="assets/js/admin-script.js"></script>
-    <script src="assets/js/profile.js"></script>
 </body>
 </html>

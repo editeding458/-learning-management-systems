@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,23 +6,31 @@
     <title>Analytics - Tech LMS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/student-style.css">
 </head>
 <body>
     <div class="dashboard-container">
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-brand">
-                <a href="index.html" class="logo"><i class="fa-solid fa-graduation-cap"></i><span>Tech</span></a>
+                <a href="student.html" class="logo"><i class="fa-solid fa-graduation-cap"></i><span>Tech</span></a>
                 <i class="fa-solid fa-xmark mobile-close" id="sidebarClose"></i>
             </div>
             <ul class="sidebar-menu">
-                <li><a href="index.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-                <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
-                <li><a href="analytics.html" class="active"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
-                <li><a href="certificates.html"><i class="fa-solid fa-certificate"></i> Certificates</a></li>
-                <li><a href="saved-items.html"><i class="fa-solid fa-bookmark"></i> Saved Items</a></li>
-                <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
-                <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                 <li><a href="student.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+            <li><a href="payments.html" class="active"><i class="fa-solid fa-credit-card"></i> Payments</a></li>
+            <li><a href="assignments.html"><i class="fa-solid fa-file-lines"></i> Assignments</a></li>
+            <li><a href="live-classes.html"><i class="fa-solid fa-video"></i> Live Classes</a></li>
+            <li><a href="attendance.html"><i class="fa-solid fa-calendar-check"></i> Attendance</a></li>
+            <li><a href="leave.html"><i class="fa-solid fa-calendar-minus"></i> Leave Requests</a></li>
+            <li><a href="analytics.html"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
+            <li><a href="learning-level.html"><i class="fa-solid fa-stairs"></i> Learning Level</a></li>
+            <li><a href="reviews.html"><i class="fa-solid fa-star-half-stroke"></i> Course Reviews</a></li>
+            <li><a href="coupons.html"><i class="fa-solid fa-ticket"></i> Coupons</a></li>
+            <li><a href="certificates.html"><i class="fa-solid fa-certificate"></i> Certificates</a></li>
+            <li><a href="saved-items.html"><i class="fa-solid fa-bookmark"></i> Saved Items</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
             </ul>
         </aside>
 
@@ -44,36 +52,26 @@
                 <div class="stats-row">
                     <div class="stat-card">
                         <div class="stat-icon blue"><i class="fa-solid fa-clock"></i></div>
-                        <div class="stat-info"><h3>42 Hrs</h3><p>Total Study Time</p></div>
+                        <div class="stat-info"><h3 id="analyticsStudyTime">0 Hrs</h3><p>Total Study Time</p></div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon green"><i class="fa-solid fa-fire"></i></div>
-                        <div class="stat-info"><h3>7 Days</h3><p>Current Streak</p></div>
+                        <div class="stat-info"><h3 id="analyticsStreak">0 Days</h3><p>Current Streak</p></div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon yellow"><i class="fa-solid fa-star"></i></div>
-                        <div class="stat-info"><h3>92%</h3><p>Average Score</p></div>
+                        <div class="stat-info"><h3 id="analyticsAverageScore">0%</h3><p>Average Score</p></div>
                     </div>
                 </div>
 
                 <div class="widget-box" style="margin-top: 20px;">
                     <h3>Weekly Study Hours Overview</h3>
-                    <div style="height: 200px; display: flex; align-items: flex-end; justify-content: space-around; padding-top: 20px; border-bottom: 1px solid #e5e7eb;">
-                        <div style="background: #06322b; width: 30px; height: 60%; border-radius: 6px 6px 0 0;" title="Mon"></div>
-                        <div style="background: #06322b; width: 30px; height: 80%; border-radius: 6px 6px 0 0;" title="Tue"></div>
-                        <div style="background: #06322b; width: 30px; height: 40%; border-radius: 6px 6px 0 0;" title="Wed"></div>
-                        <div style="background: #06322b; width: 30px; height: 95%; border-radius: 6px 6px 0 0;" title="Thu"></div>
-                        <div style="background: #06322b; width: 30px; height: 70%; border-radius: 6px 6px 0 0;" title="Fri"></div>
-                        <div style="background: #FDC800; width: 30px; height: 90%; border-radius: 6px 6px 0 0;" title="Sat"></div>
-                        <div style="background: #06322b; width: 30px; height: 50%; border-radius: 6px 6px 0 0;" title="Sun"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-around; font-size: 12px; margin-top: 10px; color: #687280;">
-                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-                    </div>
+                    <div class="study-hours-chart" id="weeklyStudyHoursChart" aria-label="No study sessions recorded"></div>
                 </div>
             </div>
         </main>
     </div>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/student-script.js"></script>
 </body>
 </html>
+

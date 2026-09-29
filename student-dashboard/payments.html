@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Tech LMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/student-style.css">
+    <link rel="stylesheet" href="assets/css/payment.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <a href="student.html" class="logo"><i class="fa-solid fa-graduation-cap"></i><span>Tech</span></a>
+            <i class="fa-solid fa-xmark mobile-close" id="sidebarClose"></i>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="student.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+            <li><a href="payments.html" class="active"><i class="fa-solid fa-credit-card"></i> Payments</a></li>
+            <li><a href="assignments.html"><i class="fa-solid fa-file-lines"></i> Assignments</a></li>
+            <li><a href="live-classes.html"><i class="fa-solid fa-video"></i> Live Classes</a></li>
+            <li><a href="attendance.html"><i class="fa-solid fa-calendar-check"></i> Attendance</a></li>
+            <li><a href="leave.html"><i class="fa-solid fa-calendar-minus"></i> Leave Requests</a></li>
+            <li><a href="analytics.html"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
+            <li><a href="learning-level.html"><i class="fa-solid fa-stairs"></i> Learning Level</a></li>
+            <li><a href="reviews.html"><i class="fa-solid fa-star-half-stroke"></i> Course Reviews</a></li>
+            <li><a href="coupons.html"><i class="fa-solid fa-ticket"></i> Coupons</a></li>
+            <li><a href="certificates.html"><i class="fa-solid fa-certificate"></i> Certificates</a></li>
+            <li><a href="saved-items.html"><i class="fa-solid fa-bookmark"></i> Saved Items</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+    </aside>
+    <main class="main-content">
+        <header class="dash-header">
+            <div class="header-left"><i class="fa-solid fa-bars hamburger" id="sidebarToggle"></i><h2>Payments</h2></div>
+            <div class="header-right">
+                <div class="notification" aria-label="Notifications"><i class="fa-regular fa-bell"></i><span class="badge">0</span></div>
+                <div class="user-profile"><img src="../assets/image/images (2).jfif" alt="Student"><span>Student</span></div>
+            </div>
+        </header>
+        <div class="dash-body payment-page">
+            <section class="payment-hero">
+                <div><p class="eyebrow">SECURE PAYMENT REQUEST</p><h1>Course payments</h1><p>Submit your course payment details and track approval from the admin team.</p></div>
+                <div class="payment-hero-icon"><i class="fa-solid fa-credit-card"></i></div>
+            </section>
+            <div class="payment-layout">
+                <section class="payment-card">
+                    <div class="payment-card-heading"><div><span class="payment-label">NEW PAYMENT</span><h2>Submit payment</h2></div><span class="payment-badge"><i class="fa-solid fa-shield-halved"></i> Demo secure</span></div>
+                    <form id="studentPaymentForm" class="payment-form">
+                        <label>Course
+                            <select id="paymentCourse" name="courseId" required><option value="">Choose a course</option></select>
+                        </label>
+                        <div class="payment-form-grid">
+                            <label>Amount (USD)<input id="paymentAmount" name="amount" type="number" min="0" step="0.01" placeholder="0.00" required></label>
+                            <label>Payment method
+                                <select name="method" required><option value="">Choose method</option><option>UPI</option><option>Card</option><option>Bank Transfer</option><option>Cash</option></select>
+                            </label>
+                        </div>
+                        <label>Transaction / Reference ID<input name="transactionId" type="text" maxlength="80" placeholder="e.g. TXN-2026-001" required></label>
+                        <label>Note <textarea name="note" rows="3" maxlength="300" placeholder="Optional payment note"></textarea></label>
+                        <button class="payment-primary-btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Submit payment</button>
+                        <p id="paymentFormStatus" class="payment-form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+                <aside class="payment-summary-card">
+                    <span class="payment-label">PAYMENT STATUS</span>
+                    <div class="payment-summary-number" id="paymentTotal">0</div>
+                    <p>payment requests</p>
+                    <div class="payment-mini-stats">
+                        <div><strong id="paymentPending">0</strong><span>Pending</span></div>
+                        <div><strong id="paymentApproved">0</strong><span>Approved</span></div>
+                        <div><strong id="paymentRejected">0</strong><span>Rejected</span></div>
+                    </div>
+                </aside>
+            </div>
+            <section class="payment-card payment-history-card">
+                <div class="payment-card-heading"><div><span class="payment-label">HISTORY</span><h2>My payment requests</h2></div></div>
+                <div class="payment-table-wrap"><table class="payment-table"><thead><tr><th>Course</th><th>Amount</th><th>Method</th><th>Reference</th><th>Date</th><th>Status</th><th>Receipt</th></tr></thead><tbody id="studentPaymentRows"></tbody></table></div>
+                <div id="studentPaymentEmpty" class="payment-empty" hidden><i class="fa-regular fa-credit-card"></i><p>No payment requests yet.</p></div>
+            </section>
+        </div>
+    </main>
+</div>
+<script src="assets/js/student-script.js"></script>
+<script src="assets/js/payment.js"></script>
+</body>
+</html>

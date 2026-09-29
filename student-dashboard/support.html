@@ -1,15 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Courses - Tech LMS</title>
+    <title>Contact Support - Tech LMS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/student-style.css">
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-brand">
                 <a href="student.html" class="logo"><i class="fa-solid fa-graduation-cap"></i><span>Tech</span></a>
@@ -34,32 +35,59 @@
             </ul>
         </aside>
 
+        <!-- Main Content -->
         <main class="main-content">
             <header class="dash-header">
                 <div class="header-left">
                     <i class="fa-solid fa-bars hamburger" id="sidebarToggle"></i>
-                    <h2>My Courses</h2>
+                    <h2>Contact Support</h2>
                 </div>
                 <div class="header-right">
+                    <div class="notification" aria-label="Notifications">
+                        <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                        <span class="badge">0</span>
+                    </div>
                     <div class="user-profile">
-                        <img src="../assets/image/images (2).jfif" alt="User">
-                        <span>ABC</span>
+                        <img src="../assets/image/images (2).jfif" alt="Student profile">
+                        <span>Student</span>
                     </div>
                 </div>
             </header>
 
             <div class="dash-body">
-                <div class="section-title"><h3>My enrollments</h3></div>
-                <div class="student-enrollment-grid" id="studentEnrollmentList" aria-live="polite"></div>
-                <section class="student-catalog" aria-labelledby="newCoursesTitle">
-                    <header class="section-title">
-                        <div><p class="eyebrow">JUST PUBLISHED</p><h3 id="newCoursesTitle">New assigned courses</h3></div>
-                    </header>
-                    <div class="student-catalog-grid" id="publishedCourseList" aria-live="polite"></div>
+                <section class="student-section issue-report-panel" aria-labelledby="supportTitle">
+                    <div class="issue-report-intro">
+                        <p class="eyebrow">NEED A HAND?</p>
+                        <h1 id="supportTitle" class="student-page-title">Contact support</h1>
+                        <p>Send a course, account, payment, or technical issue to the support team.</p>
+                    </div>
+                    <form class="issue-report-form" data-issue-report-form>
+                        <label>Issue type
+                            <select name="category" required>
+                                <option value="">Choose an issue type</option>
+                                <option>Course access</option>
+                                <option>Account or profile</option>
+                                <option>Payment</option>
+                                <option>Assignment</option>
+                                <option>Technical problem</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+                        <label>Subject
+                            <input name="subject" required>
+                        </label>
+                        <label class="issue-details-field">What happened?
+                            <textarea name="details" rows="5" required></textarea>
+                        </label>
+                        <button class="btn-resume" type="submit">Send report</button>
+                        <p class="issue-report-status" data-issue-report-status role="status" aria-live="polite"></p>
+                    </form>
                 </section>
             </div>
         </main>
     </div>
+    
     <script src="assets/js/student-script.js"></script>
+    <script src="../assets/js/report-issue.js"></script>
 </body>
 </html>

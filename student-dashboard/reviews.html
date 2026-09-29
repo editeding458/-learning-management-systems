@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Courses - Tech LMS</title>
+    <title>Course Reviews - Tech LMS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/student-style.css">
@@ -33,30 +33,47 @@
             <li class="logout"><a href="../index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="dash-header">
                 <div class="header-left">
                     <i class="fa-solid fa-bars hamburger" id="sidebarToggle"></i>
-                    <h2>My Courses</h2>
+                    <h2>Course Reviews</h2>
                 </div>
                 <div class="header-right">
-                    <div class="user-profile">
-                        <img src="../assets/image/images (2).jfif" alt="User">
-                        <span>ABC</span>
-                    </div>
+                    <div class="notification" aria-label="Notifications"><i class="fa-regular fa-bell" aria-hidden="true"></i><span class="badge">0</span></div>
+                    <div class="user-profile"><img src="../assets/image/images (2).jfif" alt="Student profile"><span>Student</span></div>
                 </div>
             </header>
-
             <div class="dash-body">
-                <div class="section-title"><h3>My enrollments</h3></div>
-                <div class="student-enrollment-grid" id="studentEnrollmentList" aria-live="polite"></div>
-                <section class="student-catalog" aria-labelledby="newCoursesTitle">
-                    <header class="section-title">
-                        <div><p class="eyebrow">JUST PUBLISHED</p><h3 id="newCoursesTitle">New assigned courses</h3></div>
-                    </header>
-                    <div class="student-catalog-grid" id="publishedCourseList" aria-live="polite"></div>
-                </section>
+                <div class="student-feature-grid">
+                    <section class="student-section">
+                        <header class="student-section-heading">
+                            <div><p class="eyebrow">YOUR FEEDBACK</p><h1 class="student-page-title">My course reviews</h1></div>
+                        </header>
+                        <div id="studentReviews" class="student-record-list" aria-live="polite"></div>
+                    </section>
+                    <section class="student-section">
+                        <header class="student-section-heading">
+                            <div><p class="eyebrow">SHARE FEEDBACK</p><h2>Review a course</h2></div>
+                        </header>
+                        <form class="student-action-form" id="studentReviewForm">
+                            <label>Course<select name="course" required></select></label>
+                            <label>Rating
+                                <select name="rating" required>
+                                    <option value="">Choose rating</option>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Good</option>
+                                    <option value="3">3 - Okay</option>
+                                    <option value="2">2 - Needs work</option>
+                                    <option value="1">1 - Poor</option>
+                                </select>
+                            </label>
+                            <label class="student-field-wide">Review<textarea name="comment" rows="4" required maxlength="500"></textarea></label>
+                            <button class="btn-resume" type="submit">Send review</button>
+                            <p id="studentReviewStatus" role="status" aria-live="polite"></p>
+                        </form>
+                    </section>
+                </div>
             </div>
         </main>
     </div>

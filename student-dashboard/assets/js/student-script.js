@@ -84,7 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 published.className = 'catalog-published';
                 published.textContent = 'Published';
                 footer.append(price, published);
-                details.append(category, title, footer);
+                const action = document.createElement('button');
+                action.type = 'button';
+                action.className = 'btn-resume';
+                action.dataset.payPublishedCourse = course.id;
+                action.textContent = 'Pay & start learning';
+                details.append(category, title, footer, action);
                 card.append(image, details);
                 publishedCourseList.appendChild(card);
             });
@@ -92,6 +97,86 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPublishedCourses();
         window.addEventListener('storage', event => event.key === 'lms-courses' && renderPublishedCourses());
     }
+
+
+    const ensureCourseViewer = () => {
+        if (document.getElementById('courseViewerDialog')) return document.getElementById('courseViewerDialog');
+        const dialog = document.createElement('dialog');
+        dialog.id = 'courseViewerDialog';
+        dialog.className = 'student-course-viewer';
+        dialog.innerHTML = `<div class="course-viewer-shell">
+            <button type="button" class="course-viewer-close" aria-label="Close">&times;</button>
+            <div class="course-viewer-head"><div><p class="eyebrow">MY COURSE</p><h2 id="courseViewerTitle">Course</h2><p id="courseViewerMeta"></p></div></div>
+            <div id="courseViewerSessions" class="course-session-list"></div>
+        </div>`;
+        document.body.appendChild(dialog);
+        dialog.querySelector('.course-viewer-close').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+        return dialog;
+    };
+
+    const toVideoEmbed = url => {
+        const raw = String(url || '').trim();
+        if (!raw) return '';
+        try {
+            const parsed = new URL(raw);
+            if (parsed.hostname.includes('youtube.com')) {
+                const id = parsed.searchParams.get('v');
+                return id ? `https://www.youtube.com/embed/${encodeURIComponent(id)}` : raw;
+            }
+            if (parsed.hostname === 'youtu.be') return `https://www.youtube.com/embed/${encodeURIComponent(parsed.pathname.slice(1))}`;
+        } catch {}
+        return raw;
+    };
+
+    const openStudentCourse = courseId => {
+        const course = readStorage('lms-courses', []).find(item => String(item.id) === String(courseId));
+        if (!course) return;
+        const enrollments = readStorage('lms-enrollments', []);
+        const enrollment = (Array.isArray(enrollments) ? enrollments : []).find(item => item.email === user?.email && String(item.courseId) === String(course.id));
+        const isUnlocked = Number(course.price || 0) === 0 || enrollment?.status === 'Paid' || enrollment?.status === 'Free';
+        if (!isUnlocked) {
+            if (enrollment?.status === 'Pending') {
+                alert('Payment submitted successfully. Sessions will start after admin approves your payment.');
+            } else if (enrollment?.status === 'Rejected') {
+                alert('Your payment was rejected. Please make the payment again to start the course sessions.');
+                window.location.href = `payments.html?course=${encodeURIComponent(course.id)}`;
+            } else {
+                window.location.href = `payments.html?course=${encodeURIComponent(course.id)}`;
+            }
+            return;
+        }
+        const dialog = ensureCourseViewer();
+        document.getElementById('courseViewerTitle').textContent = course.title || 'Course';
+        document.getElementById('courseViewerMeta').textContent = `${course.category || 'General'} · ${Array.isArray(course.sessions) ? course.sessions.length : 0} sessions`;
+        const sessions = Array.isArray(course.sessions) ? course.sessions : [];
+        const container = document.getElementById('courseViewerSessions');
+        container.innerHTML = sessions.length ? sessions.map((session, index) => {
+            const url = toVideoEmbed(session.videoUrl);
+            const video = url
+                ? `<div class="course-video-wrap"><iframe src="${escapeHTML(url)}" title="${escapeHTML(session.name || session.title || `Session ${index + 1}`)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+                : '<div class="course-video-placeholder"><i class="fa-solid fa-video-slash"></i><span>Video not added for this session.</span></div>';
+            return `<article class="course-session-card"><div class="course-session-heading"><span>Session ${index + 1}</span><h3>${escapeHTML(session.name || session.title || `Session ${index + 1}`)}</h3><small>${index === 0 ? 'Start this session' : 'Next session'}</small></div>${video}</article>`;
+        }).join('') : '<div class="course-video-placeholder"><i class="fa-solid fa-list"></i><span>No sessions have been added by the admin yet.</span></div>';
+        dialog.showModal();
+    };
+
+    const courseActionContainer = document.getElementById('studentEnrollmentList');
+    courseActionContainer?.addEventListener('click', event => {
+        const openButton = event.target.closest('[data-open-student-course]');
+        const payButton = event.target.closest('[data-pay-student-course]');
+        if (openButton) {
+            openStudentCourse(openButton.dataset.openStudentCourse);
+            return;
+        }
+        if (payButton) window.location.href = `payments.html?course=${encodeURIComponent(payButton.dataset.payStudentCourse)}`;
+    });
+
+    const publishedActionContainer = document.getElementById('publishedCourseList');
+    publishedActionContainer?.addEventListener('click', event => {
+        const payButton = event.target.closest('[data-pay-published-course]');
+        if (payButton) window.location.href = `payments.html?course=${encodeURIComponent(payButton.dataset.payPublishedCourse)}`;
+    });
 
     const notification = document.querySelector('.notification');
     if (notification) {
@@ -298,8 +383,14 @@ function initializeStudentFeatures(user) {
         localStorage.setItem(studentKey, JSON.stringify(notices.slice(0, 50)));
         window.dispatchEvent(new Event('lms-student-notifications-updated'));
     };
-    const assignedCourses = () => readList('lms-courses').filter(course => course.status === 'Published' && (course.assignedStudentEmails || []).includes(user.email));
     const currentEnrollments = () => readList('lms-enrollments').filter(item => item.email === user.email);
+    const assignedCourses = () => {
+        const enrollments = currentEnrollments();
+        return readList('lms-courses').filter(course => course.status === 'Published' && (
+            (course.assignedStudentEmails || []).includes(user.email) ||
+            enrollments.some(item => String(item.courseId) === String(course.id))
+        ));
+    };
 
     const renderEnrollments = () => {
         const container = document.getElementById('studentEnrollmentList');
@@ -315,7 +406,16 @@ function initializeStudentFeatures(user) {
             const enrollment = enrollments.find(item => item.courseId === course.id) || null;
             const card = document.createElement('article');
             card.className = 'student-enrollment-card';
-            card.innerHTML = `<img src="${escapeHTML(course.image || '../assets/image/images (2).jfif')}" alt="${escapeHTML(course.title)} cover"><div class="student-enrollment-details"><span class="cat">${escapeHTML(course.category || 'General')}</span><h3>${escapeHTML(course.title)}</h3><p>Price: ${Number(course.price || 0) === 0 ? 'Free' : `$${Number(course.price).toFixed(2)}`}</p><p>Payment: <strong>${escapeHTML(enrollment?.status || 'Pending')}</strong></p>${enrollment?.status === 'Pending' ? `<button class="btn-resume" type="button" data-enrollment-paid="${escapeHTML(enrollment.id)}">Confirm payment (demo)</button>` : ''}</div>`;
+            const isPaid = Number(course.price || 0) === 0 || enrollment?.status === 'Paid' || enrollment?.status === 'Free';
+            let action = '';
+            if (isPaid) {
+                action = `<button class="btn-resume" type="button" data-open-student-course="${escapeHTML(course.id)}"><i class="fa-solid fa-play"></i> Start Learning</button>`;
+            } else if (enrollment?.status === 'Pending') {
+                action = `<span class="status-pill status-pending">Payment pending approval</span>`;
+            } else {
+                action = `<button class="btn-resume" type="button" data-pay-student-course="${escapeHTML(course.id)}">Pay & Start Sessions</button>`;
+            }
+            card.innerHTML = `<img src="${escapeHTML(course.image || '../assets/image/images (2).jfif')}" alt="${escapeHTML(course.title)} cover"><div class="student-enrollment-details"><span class="cat">${escapeHTML(course.category || 'General')}</span><h3>${escapeHTML(course.title)}</h3><p>Price: ${Number(course.price || 0) === 0 ? 'Free' : `$${Number(course.price).toFixed(2)}`}</p><p>Payment: <strong>${escapeHTML(enrollment?.status || 'Pending')}</strong></p>${action}</div>`;
             container.appendChild(card);
         });
         const dashboardCourses = document.getElementById('dashboardCourseProgress');
@@ -471,18 +571,6 @@ function initializeStudentFeatures(user) {
     };
     renderAll();
 
-    document.getElementById('studentEnrollmentList')?.addEventListener('click', event => {
-        const button = event.target.closest('[data-enrollment-paid]');
-        if (!button) return;
-        const enrollments = readList('lms-enrollments');
-        const enrollment = enrollments.find(item => item.id === button.dataset.enrollmentPaid && item.email === user.email);
-        if (!enrollment) return;
-        enrollment.status = 'Paid';
-        enrollment.paidAt = new Date().toISOString();
-        localStorage.setItem('lms-enrollments', JSON.stringify(enrollments));
-        addAdminNotification(`${user.name || 'A student'} marked a course payment paid.`, `${user.email}: ${enrollment.course}`);
-        renderAll();
-    });
     document.getElementById('studentCoupons')?.addEventListener('click', event => {
         const button = event.target.closest('[data-apply-coupon]');
         if (!button) return;

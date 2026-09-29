@@ -1238,7 +1238,8 @@ select {
 
     .quote-form-box input,
     .quote-form-box textarea {
-        font-size: 16px; /* prevents iOS zoom */
+        font-size: 16px;
+        /* prevents iOS zoom */
         min-height: 46px;
     }
 
@@ -1356,6 +1357,7 @@ select {
 
 /* Touch devices: remove hover transforms that can feel awkward on phones */
 @media (hover: none) and (pointer: coarse) {
+
     .course-card:hover,
     .step-card:hover,
     .insight-card:hover,
@@ -1389,4 +1391,3 @@ select {
         scroll-behavior: auto !important;
     }
 }
-

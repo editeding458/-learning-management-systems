@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <label>Assigned students<select name="assignedStudentEmails" multiple size="5"></select><small>Only selected students can view this course.</small></label>
             <label>Price (USD)<input name="price" type="number" min="0" step="0.01" required></label>
             <label>Visibility<select name="status"><option>Draft</option><option>Published</option></select></label>
+            <label>Course sessions <textarea name="sessions" rows="7" placeholder="Session 1 | Introduction | https://example.com/video.mp4
+Session 2 | HTML Basics | https://www.youtube.com/watch?v=VIDEO_ID"></textarea><small>One session per line: title | session name | video URL. YouTube, MP4 and other browser-playable video URLs are supported.</small></label>
             <label class="course-editor-image-field">Replace course image <input name="image" type="file" accept="image/jpeg,image/png,image/webp"><small>Leave empty to keep the current image. JPG, PNG, or WebP up to 1 MB.</small></label>
             <img class="course-editor-preview" alt="Current course image" hidden>
             <p class="course-editor-message" role="status" aria-live="polite"></p>
@@ -51,6 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         form.elements.namedItem('category').value = course.category || '';
         form.elements.namedItem('price').value = Number(String(course.price || '0').replace(/[^\d.]/g, '') || 0);
         form.elements.namedItem('status').value = course.status || 'Draft';
+        form.elements.namedItem('sessions').value = Array.isArray(course.sessions)
+            ? course.sessions.map((session, index) => `${session.title || `Session ${index + 1}`} | ${session.name || session.title || `Session ${index + 1}`} | ${session.videoUrl || ''}`).join('\n')
+            : '';
         fillAccounts(course);
         imageInput.value = '';
         preview.src = course.image || '';
@@ -103,6 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         const values = Object.fromEntries(new FormData(form).entries());
+        const sessions = String(values.sessions || '').split(/\r?\n/).map((line, index) => {
+            const parts = line.split('|').map(part => part.trim());
+            if (!parts[0]) return null;
+            return { id: `session-${Date.now()}-${index}`, title: parts[0], name: parts[1] || parts[0], videoUrl: parts[2] || '' };
+        }).filter(Boolean);
         const selectedStudents = [...studentsSelect.selectedOptions].map(option => option.value);
         if (values.status === 'Published' && !selectedStudents.length) {
             message.textContent = 'Assign the published course to at least one student.';
@@ -141,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             students: String(selectedStudents.length),
             price: Number(values.price).toFixed(2),
             status: values.status,
+            sessions,
             image
         };
 

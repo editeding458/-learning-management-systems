@@ -25,7 +25,7 @@
             <li><a href="attendance.html"><i class="fa-solid fa-calendar-check"></i> Attendance</a></li>
             <li><a href="leave.html"><i class="fa-solid fa-calendar-minus"></i> Leave Requests</a></li>
             <li><a href="analytics.html"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
-            <li><a href="learning-level.html"><i class="fa-solid fa-stairs"></i> Learning Level</a></li>
+
             <li><a href="reviews.html"><i class="fa-solid fa-star-half-stroke"></i> Course Reviews</a></li>
             <li><a href="coupons.html"><i class="fa-solid fa-ticket"></i> Coupons</a></li>
             <li><a href="certificates.html"><i class="fa-solid fa-certificate"></i> Certificates</a></li>
@@ -44,7 +44,7 @@
         </header>
         <div class="dash-body payment-page">
             <section class="payment-hero">
-                <div><p class="eyebrow">SECURE PAYMENT REQUEST</p><h1>Course payments</h1><p>Submit your course payment details and track approval from the admin team.</p></div>
+                <div><p class="eyebrow">SECURE PAYMENT REQUEST</p><h1>Course payments</h1><p>Submit your course payment details. Admin approval is required before the official payment bill can be downloaded.</p></div>
                 <div class="payment-hero-icon"><i class="fa-solid fa-credit-card"></i></div>
             </section>
             <div class="payment-layout">
@@ -55,9 +55,18 @@
                             <select id="paymentCourse" name="courseId" required><option value="">Choose a course</option></select>
                         </label>
                         <div class="payment-form-grid">
-                            <label>Amount (USD)<input id="paymentAmount" name="amount" type="number" min="0" step="0.01" placeholder="0.00" required></label>
+                            <label>Course price
+                                <span class="payment-original-price" id="paymentOriginalAmount">$0.00</span>
+                            </label>
+                            <label>Discount coupon
+                                <select id="paymentCoupon" name="couponId"><option value="">No coupon / select coupon</option></select>
+                            </label>
+                        </div>
+                        <p id="paymentDiscountPreview" class="payment-discount-preview">Choose a course to see available coupons.</p>
+                        <div class="payment-form-grid">
+                            <label>Payable amount (USD)<input id="paymentAmount" name="amount" type="number" min="0" step="0.01" placeholder="0.00" readonly required></label>
                             <label>Payment method
-                                <select name="method" required><option value="">Choose method</option><option>UPI</option><option>Card</option><option>Bank Transfer</option><option>Cash</option></select>
+                                <select name="method" required><option value="">Choose method</option><option>UPI</option><option>Card</option><option>Bank Transfer</option><option>Cash</option><option>Coupon / Free</option></select>
                             </label>
                         </div>
                         <label>Transaction / Reference ID<input name="transactionId" type="text" maxlength="80" placeholder="e.g. TXN-2026-001" required></label>
@@ -79,7 +88,7 @@
             </div>
             <section class="payment-card payment-history-card">
                 <div class="payment-card-heading"><div><span class="payment-label">HISTORY</span><h2>My payment requests</h2></div></div>
-                <div class="payment-table-wrap"><table class="payment-table"><thead><tr><th>Course</th><th>Amount</th><th>Method</th><th>Reference</th><th>Date</th><th>Status</th><th>Receipt</th></tr></thead><tbody id="studentPaymentRows"></tbody></table></div>
+                <div class="payment-table-wrap"><table class="payment-table"><thead><tr><th>Course</th><th>Amount</th><th>Method</th><th>Reference</th><th>Date</th><th>Status</th><th>Payment Bill</th></tr></thead><tbody id="studentPaymentRows"></tbody></table></div>
                 <div id="studentPaymentEmpty" class="payment-empty" hidden><i class="fa-regular fa-credit-card"></i><p>No payment requests yet.</p></div>
             </section>
         </div>

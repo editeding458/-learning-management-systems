@@ -1804,3 +1804,31 @@ ul {
         padding: 13px 10px;
     }
 }
+
+.student-course-viewer{width:min(1000px,94vw);max-width:1000px;border:0;border-radius:22px;padding:0;background:#fff;box-shadow:0 30px 90px rgba(15,23,42,.25)}
+.student-course-viewer::backdrop{background:rgba(15,23,42,.65);backdrop-filter:blur(4px)}
+.course-viewer-shell{padding:24px;max-height:88vh;overflow:auto}
+.course-viewer-close{float:right;width:40px;height:40px;border:0;border-radius:50%;background:#f1f5f3;font-size:26px;cursor:pointer}
+.course-viewer-head{padding-right:45px;margin-bottom:20px}
+.course-session-list{display:grid;gap:18px}
+.course-session-card{border:1px solid #e3ebe6;border-radius:16px;padding:16px;background:#fbfdfc}
+.course-session-heading span{font-size:12px;font-weight:700;color:#176b52;text-transform:uppercase}
+.course-session-heading h3{margin:5px 0 14px}
+.course-video-wrap{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#0d1117}
+.course-video-wrap iframe{width:100%;height:100%;border:0}
+.course-video-placeholder{min-height:180px;border-radius:12px;background:#eef4f0;display:flex;align-items:center;justify-content:center;gap:10px;color:#667085}
+@media(max-width:600px){.course-viewer-shell{padding:16px}.student-course-viewer{width:96vw}.course-session-card{padding:12px}}
+
+.support-ticket-history{margin-top:22px}
+.support-ticket-list{display:grid;gap:14px}
+.support-ticket-card{padding:16px;border:1px solid var(--border-color,#e3ebe6);border-radius:14px;background:#fff}
+.support-ticket-card>div:first-child{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.support-ticket-card p{line-height:1.6;margin:8px 0}
+.support-ticket-status{display:inline-block;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.support-ticket-status.is-open{background:#fff4df;color:#a15c00}.support-ticket-status.is-resolved{background:#e9f8ef;color:#176b52}
+.support-ticket-reply{margin-top:10px;padding:12px;border-radius:10px;background:#eef7f2;border-left:3px solid #176b52}
+
+/* Paid course session access */
+.course-session-heading small{display:block;margin-top:4px;color:#667085;font-size:.82rem;font-weight:500}
+.status-pill.status-pending{display:inline-flex;align-items:center;gap:6px}
+@media(max-width:640px){.course-session-heading h3{font-size:1rem}.course-session-card{width:100%}}

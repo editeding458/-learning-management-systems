@@ -359,7 +359,7 @@ function initializeModulePage() {
     const configs = {
         'add-course': {
             title: 'Course catalogue', desc: 'Create a course and assign it directly to students before publishing.', action: 'Add course',
-            fields: [{ name: 'title', label: 'Course title', required: true }, { name: 'category', label: 'Category', required: true }, { name: 'assignedStudentEmails', label: 'Assign to students', type: 'select', multiple: true }, { name: 'price', label: 'Price (USD)', type: 'number', required: true }, { name: 'image', label: 'Course image', type: 'file', accept: 'image/jpeg,image/png,image/webp', required: true }, { name: 'status', label: 'Visibility', type: 'select', options: ['Draft', 'Published'] }],
+            fields: [{ name: 'title', label: 'Course title', required: true }, { name: 'category', label: 'Category', required: true }, { name: 'assignedStudentEmails', label: 'Assign to students', type: 'select', multiple: true }, { name: 'price', label: 'Price (USD)', type: 'number', required: true }, { name: 'sessions', label: 'Course sessions (one per line: title | session name | video URL)', type: 'textarea' }, { name: 'image', label: 'Course image', type: 'file', accept: 'image/jpeg,image/png,image/webp', required: true }, { name: 'status', label: 'Visibility', type: 'select', options: ['Draft', 'Published'] }],
             columns: [['title', 'Course'], ['category', 'Category'], ['assignedStudentCount', 'Assigned students'], ['price', 'Price'], ['status', 'Status']],
             rows: []
         },
@@ -648,10 +648,16 @@ function initializeModulePage() {
                 showFormError('Could not read this image. Choose it again.');
                 return;
             }
+            const sessions = String(values.sessions || '').split(/\r?\n/).map((line, index) => {
+                const parts = line.split('|').map(part => part.trim());
+                if (!parts[0]) return null;
+                return { id: `session-${Date.now()}-${index}`, title: parts[0], name: parts[1] || parts[0], videoUrl: parts[2] || '' };
+            }).filter(Boolean);
             const course = {
                 id: globalThis.crypto?.randomUUID?.() || `course-${Date.now()}`,
                 title: values.title.trim(),
                 category: values.category.trim(),
+                sessions,
                 assignedStudentEmails,
                 assignedStudentCount: assignedStudentEmails.length,
                 students: String(assignedStudentEmails.length),

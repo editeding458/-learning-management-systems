@@ -270,3 +270,25 @@ body {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     }
 }
+
+@media (max-width: 480px) {
+    .auth-form-container {
+        align-items: flex-start;
+        padding: 24px 14px;
+    }
+
+    .auth-card {
+        padding: 20px 15px;
+        border-radius: 8px;
+    }
+
+    .auth-header h2 {
+        font-size: 24px;
+    }
+
+    .auth-options {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}

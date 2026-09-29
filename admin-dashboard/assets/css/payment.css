@@ -480,3 +480,69 @@
         flex-direction: column
     }
 }
+
+@media(max-width:600px) {
+    .payment-page {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .payment-hero {
+        gap: 14px;
+        padding: 20px 17px;
+        border-radius: 8px;
+    }
+
+    .payment-hero h1 {
+        overflow-wrap: anywhere;
+    }
+
+    .payment-card,
+    .payment-summary-card,
+    .admin-payment-shortcut {
+        min-width: 0;
+        padding: 16px;
+        border-radius: 7px;
+    }
+
+    .payment-toolbar {
+        align-items: stretch;
+    }
+
+    .payment-toolbar > div:first-child,
+    .payment-filters,
+    .payment-filters > * {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .payment-actions {
+        flex-wrap: wrap;
+    }
+
+    .payment-table-wrap {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media(max-width:380px) {
+    .payment-page {
+        padding-bottom: 24px;
+    }
+
+    .payment-hero {
+        padding: 17px 14px;
+    }
+
+    .payment-card,
+    .payment-summary-card,
+    .admin-payment-shortcut {
+        padding: 13px;
+    }
+
+    .payment-summary-number {
+        font-size: 36px;
+    }
+}

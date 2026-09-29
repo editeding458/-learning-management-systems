@@ -2054,3 +2054,75 @@ body {
         left: 12px;
     }
 }
+
+@media (max-width: 600px) {
+    .dash-header {
+        gap: 10px;
+        padding: 12px 14px;
+    }
+
+    .header-left {
+        min-width: 0;
+        gap: 10px;
+    }
+
+    .header-right {
+        gap: 10px;
+    }
+
+    .dash-body {
+        padding: 20px 14px 28px;
+    }
+
+    .dashboard-grid,
+    .module-layout,
+    .module-payment-stats {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .panel,
+    .module-panel,
+    .students-panel {
+        min-width: 0;
+    }
+
+    .panel-heading,
+    .students-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .table-responsive,
+    .module-table-wrap {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .module-summary {
+        min-width: 0;
+    }
+
+    .module-summary h1,
+    .students-heading h1 {
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 380px) {
+    .dash-header h2 {
+        max-width: 42vw;
+        font-size: 14px;
+    }
+
+    .dash-body {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .panel,
+    .module-panel,
+    .students-panel {
+        padding: 13px 10px;
+    }
+}

@@ -950,3 +950,60 @@ ul {
         text-align: center;
     }
 }
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .courses-grid,
+    .insights-grid,
+    .steps-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-grid,
+    .about-grid,
+    .contact-wrapper {
+        min-width: 0;
+    }
+
+    .course-card,
+    .insight-card,
+    .step-card {
+        min-width: 0;
+    }
+
+    .top-bar-content,
+    .top-info {
+        flex-wrap: wrap;
+    }
+
+    .form-row {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .nav-container {
+        gap: 10px;
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .logo {
+        min-width: 0;
+        font-size: 19px;
+    }
+
+    .hero-content h1 {
+        font-size: 26px;
+        overflow-wrap: anywhere;
+    }
+
+    .quote-form-box {
+        padding: 18px 12px;
+    }
+}

@@ -478,3 +478,55 @@
     line-height: 1.7;
     margin: 8px 0 12px
 }
+
+@media(max-width:600px) {
+    .payment-page {
+        width: 100%;
+        min-width: 0;
+        padding-bottom: 28px;
+    }
+
+    .payment-hero {
+        gap: 14px;
+        padding: 20px 17px;
+        border-radius: 8px;
+    }
+
+    .payment-hero h1 {
+        overflow-wrap: anywhere;
+    }
+
+    .payment-card,
+    .payment-summary-card,
+    .student-payment-shortcut {
+        min-width: 0;
+        padding: 16px;
+        border-radius: 7px;
+    }
+
+    .payment-table-wrap {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .payment-primary-btn {
+        min-height: 44px;
+    }
+}
+
+@media(max-width:380px) {
+    .payment-hero {
+        padding: 17px 14px;
+    }
+
+    .payment-card,
+    .payment-summary-card,
+    .student-payment-shortcut {
+        padding: 13px;
+    }
+
+    .payment-summary-number {
+        font-size: 36px;
+    }
+}

@@ -1730,3 +1730,77 @@ ul {
         cursor: pointer;
     }
 }
+
+@media (max-width: 600px) {
+    .dash-header {
+        min-height: 64px;
+        gap: 10px;
+        padding: 12px 14px;
+    }
+
+    .header-left {
+        min-width: 0;
+        gap: 10px;
+    }
+
+    .dash-header h2 {
+        max-width: 46vw;
+        overflow: hidden;
+        font-size: 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .header-right {
+        gap: 10px;
+    }
+
+    .user-profile span {
+        display: none;
+    }
+
+    .dash-body {
+        min-width: 0;
+        padding: 20px 14px 28px;
+    }
+
+    .content-grid,
+    .student-feature-grid,
+    .student-action-form {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .widget-box,
+    .student-section {
+        min-width: 0;
+    }
+
+    .attendance-table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .student-field-wide,
+    .student-action-form [role="status"] {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 380px) {
+    .dash-header h2 {
+        max-width: 40vw;
+        font-size: 14px;
+    }
+
+    .dash-body {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .student-section,
+    .widget-box {
+        padding: 13px 10px;
+    }
+}
